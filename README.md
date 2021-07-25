@@ -2,7 +2,8 @@
 
 ### Overview
 
-Polylend is a Layer-2 solution based Yield-Aggregator and lending product。Truly realize one investment, two gains。
+Polylend is a Layer-2 solution based Yield-Aggregator and lending product。
+Truly realize one investment, two gains。
 
 ### :tropical_fish: Deployer
 
