@@ -43,23 +43,14 @@ class CNN_LSTM_Model(nn.Cell):
         return output
 
 def main():
-    # 准备数据
     X = Tensor(X_normalized.astype(np.float32))
     y = Tensor(y_normalized.astype(np.float32).reshape(-1, 1))
-
-    # 定义模型、损失函数和优化器
     net = CNN_LSTM_Model()
     loss_fn = L1Loss()
     optimizer = nn.Adam(net.trainable_params(), learning_rate=0.001)
-
-    # 训练模型
     model = Model(net, loss_fn, optimizer, metrics={"MAE": MeanAbsoluteError()})
     model.train(epochs=50, train_dataset=X, train_labels=y)
-
-    # 预测
     predicted = net(X)
-
-    # 反归一化
     predicted_denormalized = scaler.inverse_transform(predicted.asnumpy().reshape(-1, 1)).reshape(-1)
     print("Predicted prices (denormalized):", predicted_denormalized)
 
